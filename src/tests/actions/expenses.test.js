@@ -8,6 +8,7 @@ import {
   startRemoveExpense,
   setExpenses,
   startAddExpense,
+  startEditExpense,
   startSetExpenses
 } from '../../actions/expenses'
 import database from '../../firebase/firebase'
@@ -31,6 +32,24 @@ test('should setup remove expense action object', () => {
   })
 })
 
+test('should remove expense from firebase', (done) => {
+  const store = createMockStore()
+  const id = expenses[2].id
+  store.dispatch(startRemoveExpense({ id }))
+    .then(() => {
+      const actions = store.getActions()
+      expect(actions[0]).toEqual({
+        type: 'REMOVE_EXPENSE',
+        id
+      })
+
+      return database.ref(`expenses/${id}`).once('value')
+    }).then((snapshot) => {
+    expect(snapshot.val()).toBeNull()
+    done()
+  })
+})
+
 test('should setup edit expense action object', () => {
   const action = editExpense('123abc', { description: 'Rent', amount: 12300 })
   expect(action).toEqual({
@@ -40,6 +59,33 @@ test('should setup edit expense action object', () => {
       description: 'Rent',
       amount: 12300
     }
+  })
+})
+
+test('should edit expense in firebase', (done) => {
+  const store = createMockStore()
+  const id = expenses[1].id
+  const updates = {
+    description: 'Bob Ross Shirt',
+    note: 'Best shirt ever!',
+    amount: 2999
+  }
+  store.dispatch(startEditExpense(id, updates))
+    .then(() => {
+      const actions = store.getActions()
+      expect(actions[0]).toEqual({
+        type: 'EDIT_EXPENSE',
+        id,
+        updates
+      })
+
+      return database.ref(`expenses/${id}`).once('value')
+    }).then((snapshot) => {
+        expect(snapshot.val()).toEqual({
+        createdAt: -345600000,
+        ...updates
+      })
+        done()
   })
 })
 
@@ -127,23 +173,4 @@ test('should fetch the expenses from firebase', (done) => {
   })
 })
 
-test('should remove expenses from firebase', (done) => {
-  const store = createMockStore()
-  const id = {
-    id: '1'
-  }
-  store.dispatch(startRemoveExpense({ id: '1' }))
-    .then(() => {
-      const actions = store.getActions()
-      expect(actions[0]).toEqual({
-        type: 'REMOVE_EXPENSE',
-        id: '1'
-      })
-
-      return database.ref(`expenses/${actions[0].id}`).once('value')
-  }).then((snapshot) => {
-      expect(snapshot.val()).toBeNull()
-      done()
-    })
-})
 

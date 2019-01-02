@@ -1,13 +1,26 @@
-import {NavLink} from "react-router-dom";
-import React from "react";
+import { NavLink } from 'react-router-dom'
+import React from 'react'
 
-const Header = () => (
-  <header>
-    <h1>Expensify</h1>
-    <NavLink to="/" activeClassName="is-active" exact={true}>Dashboard&nbsp;&nbsp;</NavLink>
-    <NavLink to="/create" activeClassName="is-active">Create Expense&nbsp;&nbsp;</NavLink>
-    <NavLink to="/edit" activeClassName="is-active">Edit Expense&nbsp;&nbsp;</NavLink>
-  </header>
-);
+export default class Header extends React.Component {
+  constructor(props) {
+    super(props)
 
-export default Header;
+    this.state = {
+      isAuthenticated: true
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        { this.state.isAuthenticated &&
+          <header>
+            <h1>Expensify</h1>
+            <NavLink to="/" activeClassName="is-active" exact={ true }>Dashboard&nbsp;&nbsp;</NavLink>
+            <NavLink to="/create" activeClassName="is-active">Create Expense&nbsp;&nbsp;</NavLink>
+          </header>
+        }
+      </div>
+    )
+  }
+}

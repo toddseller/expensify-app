@@ -1,26 +1,20 @@
 import { NavLink } from 'react-router-dom'
 import React from 'react'
+import { connect } from 'react-redux'
 
-export default class Header extends React.Component {
-  constructor(props) {
-    super(props)
+import { startLogout } from '../actions/auth'
 
-    this.state = {
-      isAuthenticated: true
-    }
-  }
+export const Header = ({ startLogout }) => (
+  <header>
+    <h1>Expensify</h1>
+    <NavLink to="/dashboard" activeClassName="is-active" exact={ true }>Dashboard&nbsp;&nbsp;</NavLink>
+    <NavLink to="/create" activeClassName="is-active">Create Expense&nbsp;&nbsp;</NavLink>
+    <button onClick={ startLogout }>Logout</button>
+  </header>
+)
 
-  render() {
-    return (
-      <div>
-        { this.state.isAuthenticated &&
-          <header>
-            <h1>Expensify</h1>
-            <NavLink to="/" activeClassName="is-active" exact={ true }>Dashboard&nbsp;&nbsp;</NavLink>
-            <NavLink to="/create" activeClassName="is-active">Create Expense&nbsp;&nbsp;</NavLink>
-          </header>
-        }
-      </div>
-    )
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  startLogout: () => dispatch(startLogout())
+})
+
+export default connect(undefined, mapDispatchToProps)(Header)

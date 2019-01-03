@@ -28,12 +28,12 @@ test('should render EditExpensePage correctly', () => {
 
 test('should handle onSubmit', () => {
   wrapper.find('ExpenseForm').prop('onSubmit')(expenses[2])
-  expect(history.push).toHaveBeenLastCalledWith('/dashboard')
+  expect(history.push).toHaveBeenLastCalledWith('/')
   expect(startEditExpense).toHaveBeenLastCalledWith(expenses[2].id, expenses[2])
 })
 
 test('should handle onClick', () => {
   wrapper.find('button').simulate('click')
-  expect(history.push).toHaveBeenLastCalledWith('/dashboard')
+  expect(history.push).toHaveBeenLastCalledWith('/')
   expect(startRemoveExpense).toHaveBeenLastCalledWith({ id: expenses[2].id })
 })

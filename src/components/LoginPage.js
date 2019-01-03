@@ -10,7 +10,18 @@ export const LoginPage = ({ startLogin }) => (
       <p>It's time to get your expenses under control.</p>
       <div className="login-button">
 
-        <button className="login-button__button" onClick={ startLogin }><img src="/images/btn_google_light_normal_ios.svg" className="login-button__image"/><span className="login-button__text">Login with Google</span></button>
+        <button
+          className="login-button__button"
+          onClick={ startLogin }
+        >
+          <img
+            src="/images/btn_google_dark_normal_ios.svg"
+            className="login-button__image"
+          />
+          <span className="login-button__text">
+            Sign in with Google
+          </span>
+        </button>
       </div>
     </div>
   </div>

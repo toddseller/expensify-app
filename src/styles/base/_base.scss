@@ -1,26 +1,34 @@
-html {
-  font-size: 62.5%;
+html
+{
+    font-size: 62.5%;
 }
 
-body {
-  color: $dark-grey;
-  font-family: 'Roboto', sans-serif;
-  font-size: $m-size;
-  line-height: 1.6;
+body
+{
+    font-family: 'Roboto', sans-serif;
+    font-size: $m-size;
+    line-height: 1.6;
+
+    color: $dark-grey;
 }
 
-button {
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  &:disabled {
-    cursor: default;
-  }
+button
+{
+    &:focus
+    {
+        outline: none;
+    }
+    &:hover
+    {
+        cursor: pointer;
+    }
+    &:disabled
+    {
+        cursor: default;
+    }
 }
 
-.is-active {
-  font-weight: bold;
+.is-active
+{
+    font-weight: bold;
 }

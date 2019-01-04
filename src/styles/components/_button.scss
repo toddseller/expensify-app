@@ -8,6 +8,14 @@
   color:       white;
   border:      none;
   background:  $blue;
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.button--link
+{
+  background: none;
 }
 
 .login-button

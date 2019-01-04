@@ -1,34 +1,34 @@
 html
 {
-    font-size: 62.5%;
+  font-size: 62.5%;
 }
 
 body
 {
-    font-family: 'Roboto', sans-serif;
-    font-size: $m-size;
-    line-height: 1.6;
+  font-family: 'Roboto', sans-serif;
+  font-size:   $m-size;
+  line-height: 1.6;
 
-    color: $dark-grey;
+  color:       $dark-grey;
 }
 
 button
 {
-    &:focus
-    {
-        outline: none;
-    }
-    &:hover
-    {
-        cursor: pointer;
-    }
-    &:disabled
-    {
-        cursor: default;
-    }
+  &:focus
+  {
+    outline: none;
+  }
+  &:hover
+  {
+    cursor: pointer;
+  }
+  &:disabled
+  {
+    cursor: default;
+  }
 }
 
 .is-active
 {
-    font-weight: bold;
+  font-weight: bold;
 }

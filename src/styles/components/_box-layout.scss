@@ -1,30 +1,30 @@
 .box-layout
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
 
-    width: 100vw;
-    height: 100vh;
+  width:           100vw;
+  height:          100vh;
 
-    background: url('/images/bg.jpg');
-    background-size: cover;
+  background:      url('/images/bg.jpg');
+  background-size: cover;
 }
 
 .box-layout__box
 {
-    width: 25rem;
-    padding: $l-size $m-size;
+  width:         25rem;
+  padding:       $l-size $m-size;
 
-    text-align: center;
+  text-align:    center;
 
-    border-radius: 3px;
-    background: fade_out(white, .25);
+  border-radius: 3px;
+  background:    fade_out(white, .25);
 }
 
 .box-layout__title
 {
-    line-height: 1;
+  line-height: 1;
 
-    margin: 0 0 $m-size 0;
+  margin:      0 0 $m-size 0;
 }

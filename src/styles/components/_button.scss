@@ -18,6 +18,10 @@
   background: none;
 }
 
+.button--secondary {
+  background: #888888;
+}
+
 .login-button
 {
   display:         flex;
@@ -32,22 +36,22 @@
 
   width:           22rem;
 
-  transition:      border .3s ease-in-out;
+  transition:      border .3s ease;
   text-align:      right;
 
   border-radius:   5px;
   background:      $google-blue;
-}
 
-.login-button__button:hover
-{
-  border: 1px solid darken($google-blue, 10%);
+  &:hover
+  {
+    border: 1px solid darken($google-blue, 10%);
+  }
 }
 
 .login-button__image
 {
   height: 5rem;
-  margin: -3px 0 -4px -14px;
+  margin: -3px 0 -4px -13px;
 }
 
 .login-button__text
